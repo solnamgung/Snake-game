@@ -8,13 +8,13 @@ public class Snake extends JFrame {
         initUI();
     }
     public void initUI() {
-        this.add(new Board());
+        add(new Board());
 
         setResizable(true);
         pack();
 
         setTitle("Snake");
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null); //locate at the center
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 

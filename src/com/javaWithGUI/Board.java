@@ -13,8 +13,8 @@ public class Board extends JPanel implements ActionListener {
     private final int height = 500;
     private final int dot_size = 10;
     private final int all_dots = 400;
-    private final int random_position = 20;
-    private final int DELAY = 200;
+    private final int random_position = 30;
+    private final int DELAY = 150;
 
     private final int x[] = new int[all_dots];
     private final int y[] = new int[all_dots];
@@ -41,10 +41,10 @@ public class Board extends JPanel implements ActionListener {
 
     private void initBoard() {
         addKeyListener(new TAdapter());
-        setBackground(Color.black);
+        setBackground(Color.darkGray);
         setFocusable(true);
-
         setPreferredSize(new Dimension(width, height));
+
         loadImages();
         initGame();
     }
@@ -85,7 +85,6 @@ public class Board extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (inGame) {
-
             checkApple();
             checkCollision();
             move();
@@ -124,10 +123,11 @@ public class Board extends JPanel implements ActionListener {
 
     private void gameOver(Graphics g) {
         String msg = "Game Over";
-        Font small = new Font("Helvetica", Font.BOLD, 14);
+        Font small = new Font("Helvetica", Font.BOLD, 20);
         FontMetrics metr = getFontMetrics(small);
 
-        g.setColor(Color.white);
+        g.setColor(Color.red);
+        this.setBackground(Color.white);
         g.setFont(small);
         g.drawString(msg, (width - metr.stringWidth(msg)) / 2, height / 2);
     }
@@ -165,7 +165,7 @@ public class Board extends JPanel implements ActionListener {
 
         for (int z = dots; z > 0; z--) {
 
-            if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z])) {
+            if ((x[0] == x[z]) && (y[0] == y[z])) {
                 inGame = false;
             }
         }
